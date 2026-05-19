@@ -91,20 +91,11 @@
             // document.dispatchEvent(evt);
         }
 
-        // function resetExplored() {
-        //     explored.purple = explored.white = explored.blue = false;
-        //     persist();
-        //     // ['purple','white','blue'].forEach(c => {
-        //     // const b = document.getElementById(`${c}-notebook`);
-        //     // if (b) { b.classList.remove('explored'); b.removeAttribute('aria-pressed'); }
-        //     // });
-        //     const instructions = document.getElementById('notebooks-instructions');
-        //     if (instructions) instructions.innerText = "It's her notebooks...";
-        // }
 
 
-        function exitPage(){
+        function exitPage(color){
             const notebook_page = document.getElementById("notebook-page");
+            markExplored(color);
             notebook_page.style.display = 'none';
         }
 
@@ -117,7 +108,7 @@
             text.innerHTML = "<p class = 'notebook-page-text' id = 'notebook-page-text'><b>scrap metal dreams story</b><br><br>This is it. He’ll pull the blaster and the whole gig will be up. Con over before it can even begin.<br>Here, you don’t have to be an engineer or a mechanic. Those folks are all long dead, their sympathies for a higher level of intelligence killed them off. No. Here. All you need to do is be able to break things, and break them well.<br>And I happen to be the best at it.</p>";
             text.style.color = 'black';
             button.classList.add('explored');
-            markExplored('purple');
+            notebook_page.querySelector('.exit-button').setAttribute('onclick', "exitPage('purple')"); //this updates the page for the corresponding button to pass the correct color, that way it's properly marked as explored and the element can be reused
         }
         function whiteButton(){
             const button = document.getElementById('white-notebook');
@@ -127,7 +118,7 @@
             text.style.display = 'block';
             text.innerHTML = "<p class = 'notebook-page-text' id = 'notebook-page-text'><b>movies to watch!!!</b></p><ul><li>Django unchained</li><li>No country for old men</li><li>Black Klansman</li><li>Parasite</li><li>The Northman</li><li>The grand Budapest Hotel</li><li>Midsommar</li><li>Atonement</li><li>Meet Joe Black</li><li>Before sunrise</li></ul>"; 
             button.classList.add('explored');   
-            markExplored('white');    
+            notebook_page.querySelector('.exit-button').setAttribute('onclick', "exitPage('white')");   
         }
         function blueButton(){
             const button = document.getElementById('blue-notebook');
@@ -137,7 +128,7 @@
             text.style.display = 'block';
             text.innerHTML = "<p class = 'notebook-page-text' id = 'notebook-page-text'>I mean, what even is a 'talk'??? I feel like the word is stupid. Why could it not have been a chat or something? Chat implies less, no I can't focus on a thing. They knew that they would throw me off, I swear they did...but if they didn't, somehow that makes this all worse.<br><br>god and NOW there's all these group projects and my quiz. I've gotta skip some of those, hopefully my group will understand. Maybe I'll just say I'm sick, close enough to the truth I guess</p>";  
             button.classList.add('explored');
-            markExplored('blue');          
+            notebook_page.querySelector('.exit-button').setAttribute('onclick', "exitPage('blue')");        
         }
 
         // const PAGE_MS = 3000;

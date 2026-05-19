@@ -89,19 +89,10 @@
             // document.dispatchEvent(evt);
         }
 
-        // function resetExplored() {
-        //     explored.purple = explored.white = explored.blue = false;
-        //     persist();
-        //     // ['purple','white','blue'].forEach(c => {
-        //     // const b = document.getElementById(`${c}-notebook`);
-        //     // if (b) { b.classList.remove('explored'); b.removeAttribute('aria-pressed'); }
-        //     // });
-        //     const instructions = document.getElementById('notebooks-instructions');
-        //     if (instructions) instructions.innerText = "It's her notebooks...";
-        // }
 
-        function exitPage(){
+        function exitPage(day){
             const notebook_page = document.getElementById("agenda-page");
+            markExplored(day);
             notebook_page.style.display = 'none';
         }
 
@@ -116,7 +107,7 @@
             text.innerHTML = "<ul><li>Spanish homework</li><li>doctor's appointment(skip?)</li><li>group project</li></ul>";
             agenda_page.classList.add('display-agenda');
             button.classList.add('explored');
-            markExplored('monday');
+            agenda_page.querySelector('.exit-button').setAttribute('onclick', "exitPage('monday')"); 
         }
         function tuesdayButton(){
             const button = document.getElementById('tuesday');
@@ -126,7 +117,7 @@
             text.style.display = 'block';
             text.innerHTML = "<ul><li>clean the room</li><li>the talk :/</li><li>group project(skip?)</li><li>math quiz</li></ul>"; 
             button.classList.add('explored');   
-            markExplored('tuesday');    
+            agenda_page.querySelector('.exit-button').setAttribute('onclick', "exitPage('tuesday')");    
         }
         
         
