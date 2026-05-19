@@ -31,6 +31,10 @@
     </div>
 
     <script>
+        localStorage.removeItem('daysExplored');
+        explored.monday = false;
+        explored.tuesday = false;
+        
         function setVisited(key, value) { localStorage.setItem(key, value ? 'true' : 'false'); }
         // state
         const explored = {

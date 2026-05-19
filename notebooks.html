@@ -32,6 +32,11 @@
     </div>
 
     <script>
+        localStorage.removeItem('notebooksExplored');
+        explored.purple = false;
+        explored.white = false;
+        explored.blue = false;
+
         function setVisited(key, value) { localStorage.setItem(key, value ? 'true' : 'false'); }
         // state
         const explored = {
